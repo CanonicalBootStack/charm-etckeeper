@@ -1,0 +1,17 @@
+options:
+  dvcs:
+    type: string
+    default: "git"
+    description: "DVCS to use when committing changes, valid options are git, bzr, hg or darcs"
+  daily-commit:
+    type: boolean
+    default: true
+    description: "Enables a daily commit of changes, in addition to commits made by package installs or manual runs of etckeeper"
+  preinstall-commit:
+    type: boolean
+    default: true
+    description: "Enable committing of changes upon package installations"
+  remote:
+    type: string
+    default: ""
+    description: "When set, configured etckeeper to push changes to the provided remote"

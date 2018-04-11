@@ -1,0 +1,45 @@
+# This file is managed by Juju, with the etckeeper charm.
+# Edits to this file will be clobbered.
+
+# The VCS to use.
+VCS="{{ config['dvcs'] }}"
+
+# Options passed to git commit when run by etckeeper.
+# TODO: Expose via charm config
+GIT_COMMIT_OPTIONS=""
+
+# Options passed to hg commit when run by etckeeper.
+# TODO: Expose via charm config
+HG_COMMIT_OPTIONS=""
+
+# Options passed to bzr commit when run by etckeeper.
+# TODO: Expose via charm config
+BZR_COMMIT_OPTIONS=""
+
+# Options passed to darcs record when run by etckeeper.
+# TODO: Expose via charm config
+DARCS_COMMIT_OPTIONS="-a"
+
+# Uncomment to avoid etckeeper committing existing changes
+# to /etc automatically once per day.
+AVOID_DAILY_AUTOCOMMITS={{ config['daily-commit'] | int }}
+
+# Uncomment to avoid etckeeper committing existing changes to 
+# /etc before installation. It will cancel the installation,
+# so you can commit the changes by hand.
+AVOID_COMMIT_BEFORE_INSTALL={{ config['preinstall-commit'] | int }}
+
+# The high-level package manager that's being used.
+# (apt, pacman-g2, yum etc)
+# TODO: Autodetect this in reactive handler
+HIGHLEVEL_PACKAGE_MANAGER=apt
+
+# The low-level package manager that's being used.
+# (dpkg, rpm, pacman-g2, etc)
+# TODO: Autodetect this in reactive handler
+LOWLEVEL_PACKAGE_MANAGER=dpkg
+
+# To push each commit to a remote, put the name of the remote here.
+# (eg, "origin" for git). Space-separated lists of multiple remotes
+# also work (eg, "origin gitlab github" for git).
+PUSH_REMOTE="{{ config['remote'] }}"

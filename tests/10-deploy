@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+
+import amulet
+import unittest
+import os
+import yaml
+
+
+class TestCharm(unittest.TestCase):
+    def setUp(self):
+        self.d = amulet.Deployment()
+
+        bundle = os.path.join(os.path.dirname(__file__), 'test-bundle.yaml')
+        with open(bundle, 'r') as bundle_file:
+            content = yaml.safe_load(bundle_file)
+            self.d.load(content)
+
+        self.d.setup(timeout=900)
+        self.d.sentry.wait(900)
+
+    def test_deployed(self):
+        """ Test that deployment succeeded """
+        self.assertTrue(self.d.deployed)
+        
+
+if __name__ == '__main__':
+    unittest.main()
